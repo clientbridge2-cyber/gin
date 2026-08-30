@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة — Barbero Taiib</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗂️</text></svg>">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">🗂️ Barbero <span>Taiib</span> — الإدارة</div>
+    <nav class="nav-links" id="adminNav" style="display:none;">
+      <a href="index.html">الموقع</a>
+      <a href="#" id="changePass">🔑 تغيير كلمة السر</a>
+      <a href="#" id="logoutBtn">خروج</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Login screen -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card form-card">
+    <div style="text-align:center;margin-bottom:16px;">
+      <div style="font-size:36px;">🔐</div>
+      <h1 style="font-size:22px;margin-top:6px;">منطقة المالك</h1>
+      <p style="color:var(--muted);font-size:14px;">هاد اللوحة خاصة بيك — أدخل كلمة السر</p>
+    </div>
+    <input id="loginPass" type="password" placeholder="كلمة السر" dir="ltr" style="text-align:center;">
+    <button class="btn" id="loginBtn" style="width:100%;margin-top:12px;">دخول</button>
+    <p id="loginErr" style="color:var(--red);font-size:13px;margin-top:10px;text-align:center;"></p>
+    <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:14px;">لم تعرفها؟ اسأل صاحب الصالون. 🔑</p>
+  </div>
+</div>
+
+<main class="container" id="adminMain" style="display:none;">
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tab="requests">📋 الطلبات</button>
+    <button class="tab" data-tab="services">💰 الخدمات والأسعار</button>
+    <button class="tab" data-tab="gallery">📸 الصور</button>
+  </div>
+
+  <!-- ============ TAB: Requests ============ -->
+  <section class="tab-panel active" id="tab-requests">
+    <div class="admin-head">
+      <h1>طلبات الحجز</h1>
+      <div class="stats" id="stats">
+        <div class="stat"><div class="num" id="cTotal">0</div><div class="lbl">الكل</div></div>
+        <div class="stat"><div class="num" id="cPending">0</div><div class="lbl">قيد الانتظار</div></div>
+        <div class="stat"><div class="num" id="cConfirmed">0</div><div class="lbl">مؤكد</div></div>
+        <div class="stat"><div class="num" id="cCompleted">0</div><div class="lbl">مكتمل</div></div>
+        <div class="stat"><div class="num" id="cCancelled">0</div><div class="lbl">ملغي</div></div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <input class="search-box" id="search" type="search" placeholder="بحث بالاسم أو رقم الهاتف...">
+      <select id="filterStatus">
+        <option value="">كل الحالات</option>
+        <option value="Pending">قيد الانتظار</option>
+        <option value="Confirmed">مؤكد</option>
+        <option value="Completed">مكتمل</option>
+        <option value="Cancelled">ملغي</option>
+      </select>
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
+        <input type="checkbox" id="autoWa" checked> فتح واتساب تلقائياً عند تغيير الحالة
+      </label>
+      <button class="btn ghost btn-sm" id="eraseAll" style="margin-right:auto;">🗑 مسح الكل</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>رقم الطلب</th>
+            <th>الاسم</th>
+            <th>رقم الهاتف</th>
+            <th>الخدمة</th>
+            <th>التاريخ والوقت</th>
+            <th>الحالة</th>
+            <th>الإجراءات</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody">
+          <tr class="empty"><td colspan="7">لا توجد طلبات بعد.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ TAB: Services & Prices ============ -->
+  <section class="tab-panel" id="tab-services">
+    <h2>الخدمات والأسعار</h2>
+    <p style="color:var(--muted);margin-bottom:16px;">
+      💰 عدّل الأسعار والصور هنا، ومبعد عافط "حفظ" — التغييرات كيظهرو على الصفحة الرئيسية فوراً.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>الخدمة</th><th>الاسم المعروض</th><th>السعر</th><th>رابط الصورة</th></tr>
+        </thead>
+        <tbody id="servicesBody"></tbody>
+      </table>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn-green" id="saveServices">💾 حفظ الخدمات والأسعار</button>
+      <button class="btn ghost" id="resetServices">↩️ الرجوع للأسعار الافتراضية</button>
+      <span id="servicesMsg" style="color:var(--green);font-size:13px;align-self:center;"></span>
+    </div>
+  </section>
+
+  <!-- ============ TAB: Gallery ============ -->
+  <section class="tab-panel" id="tab-gallery">
+    <h2>معرض الصور (ديالك)</h2>
+    <p style="color:var(--muted);margin-bottom:16px;">
+      📸 ناشر تصاور ديالك ب 2 طرق: بواسطة <b>رابط صورة</b> (أفضل) ولا رفع ملف من الحاسوب. فور الحفظ، كيظهرو في قسم "من داخل الصالون" فالصفحة الرئيسية.
+    </p>
+
+    <div class="form-card" style="max-width:none;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="gal-forms">
+        <div>
+          <label for="galUrl">إضافة برابط (URL) 📎</label>
+          <input id="galUrl" type="url" placeholder="https://.../photo.jpg">
+          <input id="galTitle" type="text" placeholder="العنوان (اختياري)" style="margin-top:8px;">
+          <button class="btn" id="addGalUrl" style="width:100%;margin-top:10px;">+ إضافة للصفحة</button>
+        </div>
+        <div>
+          <label for="galFile">رفع من الحاسوب 📁</label>
+          <input id="galFile" type="file" accept="image/*">
+          <input id="galFileTitle" type="text" placeholder="العنوان (اختياري)" style="margin-top:8px;">
+          <button class="btn" id="addGalFile" style="width:100%;margin-top:10px;">+ رفع الصورة</button>
+        </div>
+      </div>
+      <p class="form-note" style="font-size:12px;">⚠️ الصور المرفوعة كيتبّعو فالمتصفح (localStorage). صور يافعة كثر من ~1MB قد ما تبقاوش. ربط الصور عبر URL أنسب للجبال.</p>
+    </div>
+
+    <div class="gallery-grid" id="galAdminGrid" style="margin-top:22px;"></div>
+  </section>
+</main>
+
+<script src="js/store.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Barbero Taiib — صالون حلاقة احترافي: حلاقة شعر، تهذيب لحية وعناية بالوجه. احجز موعدك أونلاين.">
+  <title>Barbero Taiib | صالون الحلاقة الاحترافي</title>
+  <meta name="theme-color" content="#0f0e0d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💈</text></svg>">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">💈 Barbero <span>Taiib</span></div>
+    <nav class="nav-links">
+      <a href="#services">الخدمات</a>
+      <a href="#gallery">المعرض</a>
+      <a href="#booking">الحجز</a>
+      <a href="#visit">زورنا</a>
+      <a class="btn" href="#booking">احجز الآن</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=75')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <span class="pill">💈 صالون الحلاقة ديالك — الاحترافية على ذوقك</span>
+      <h1>مزيان، بنادم عيش <span class="gold">بحال الحلاق</span> ما يبقاش</h1>
+      <p>حلاقة شعر، تهذيب لحية وعناية بالوجه بأيدي محترفين. احجز موعدك في دقائق قليلة.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#booking">🤍 احجز موعد</a>
+        <a class="btn ghost" id="waHeroBtn" href="#" target="_blank" rel="noopener">واتساب مباشرة</a>
+      </div>
+      <div class="hero-badges">
+        <span>⭐ محترفون</span>
+        <span>🧴 منتجات أصلية</span>
+        <span>🙂 استقبال سريع</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section-title">الخدمات ديالنا</h2>
+      <p class="section-sub">خدمات كاملة بعناية فائقة — أسعار في المتناول</p>
+      <div class="services-grid" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section alt">
+    <div class="container">
+      <h2 class="section-title">علاش تختارنا؟</h2>
+      <p class="section-sub">السبب بسيط: الاحترافية اللي تستاهل</p>
+      <div class="features">
+        <div class="feature"><div class="icon">🪒</div><h3>أدوات معقمة</h3><p>نعقيمو كل شي بعد كل زبون — صحة ديالك فوق كل شي</p></div>
+        <div class="feature"><div class="icon">🎯</div><h3>خبرة حقيقية</h3><p>حلاقين محترفين كيعيطو شكل اللي كنيتقاو</p></div>
+        <div class="feature"><div class="icon">⏱️</div><h3>بلا نتضور</h3><p>الحجز المسبق يعني خدمتك فالأجّل بلا الطابور</p></div>
+        <div class="feature"><div class="icon">💰</div><h3>أسعار في المتناول</h3><p>جودة راقية ببريص معقول وواضح</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section alt" id="gallery">
+    <div class="container">
+      <h2 class="section-title">من داخل الصالون</h2>
+      <p class="section-sub">شوف بنفسك وجهة التحضير ديال ستايلك</p>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="section" id="booking">
+    <div class="container">
+      <h2 class="section-title">احجز موعدك</h2>
+      <p class="section-sub">عمّر الفورم وتكلف بيه على طول</p>
+      <div class="form-card">
+        <form id="bookingForm" novalidate>
+          <div class="form-grid">
+            <div>
+              <label for="name">الاسم الكامل *</label>
+              <input id="name" name="name" type="text" placeholder="مثال: محمد العلوي" required>
+            </div>
+            <div>
+              <label for="phone">رقم الهاتف / واتساب *</label>
+              <input id="phone" name="phone" type="tel" placeholder="06XXXXXXXX" required>
+              <div class="phone-hint">مثال: 0612345678</div>
+            </div>
+            <div>
+              <label for="service">الخدمة *</label>
+              <select id="service" name="service" required></select>
+            </div>
+            <div class="form-row-2">
+              <div>
+                <label for="date">التاريخ *</label>
+                <input id="date" name="date" type="date" required>
+              </div>
+              <div>
+                <label for="time">الوقت *</label>
+                <input id="time" name="time" type="time" required>
+              </div>
+            </div>
+            <button type="submit" class="btn" style="width:100%">أرسل طلب الحجز 👍</button>
+          </div>
+          <p class="form-note">بمجرد الإرسال، يعرض عليك رابط واتساب لتأكيد الطلب مع الصالون.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>جرب بنفسك وتشوف الفرق 👌</h2>
+      <p>احجز دابا ولا زورنا مباشرة — نتسناوك</p>
+      <div class="hero-actions">
+        <a class="btn" href="#booking">احجز موعد</a>
+        <a class="btn ghost" href="https://www.instagram.com/barbero__taiib" target="_blank" rel="noopener" style="color:#fff;border-color:#fff;">📸 إنستغرام</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section class="section" id="visit">
+    <div class="container">
+      <h2 class="section-title">زورنا</h2>
+      <p class="section-sub">كنّا على بعد دقيقة منك</p>
+      <div class="info-grid">
+        <div class="info">
+          <div class="icon">📍</div>
+          <h3>الموقع</h3>
+          <p>الإحداثيات: 35.17755° N, 2.92598° W</p>
+          <a href="https://maps.google.com/?q=35.17755,2.92598" target="_blank" rel="noopener">افتح في خرائط جوجل</a>
+        </div>
+        <div class="info">
+          <div class="icon">📱</div>
+          <h3>واتساب</h3>
+          <p id="phoneInfo"></p>
+          <a href="#" id="waInfoBtn" target="_blank" rel="noopener">راسلنا على واتساب</a>
+        </div>
+        <div class="info">
+          <div class="icon">📸</div>
+          <h3>إنستغرام</h3>
+          <p>@barbero__taiib</p>
+          <a href="https://www.instagram.com/barbero__taiib" target="_blank" rel="noopener">تابعنا</a>
+        </div>
+        <div class="info">
+          <div class="icon">🕘</div>
+          <h3>أوقات العمل</h3>
+          <p id="hoursInfo"></p>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe title="موقع Barbero Taiib" src="https://www.google.com/maps?q=35.17755,2.92598&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast">
+  <div id="toastMsg"></div>
+  <a class="btn wa-btn" id="toastWa" href="#" target="_blank" rel="noopener">✨ أرسل عبر واتساب</a>
+  <br><a href="admin.html" style="font-size:12px">→ لوحة الإدارة (للمالك)</a>
+</div>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" title="واتساب">💬</a>
+<button class="back-top" id="backTop" title="الصعود للأعلى">↑</button>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="font-size:18px;margin-bottom:10px;">💈 Barbero <span>Taiib</span></div>
+        <p style="color:var(--muted);max-width:340px;">صالون حلاقة احترافي بقلب مدينتك. حلاقة شعر، تهذيب لحية وعناية بالوجه — بنفس مزيان وأدوات معقمة.</p>
+      </div>
+      <div>
+        <h4>روابط</h4>
+        <ul>
+          <li><a href="#services">الخدمات</a></li>
+          <li><a href="#gallery">المعرض</a></li>
+          <li><a href="#booking">احجز موعد</a></li>
+          <li><a href="admin.html">لوحة الإدارة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>تواصل معنا</h4>
+        <ul>
+          <li><span dir="ltr">📞 +212 602-714889</span></li>
+          <li><a href="#" id="waFooterLink" target="_blank" rel="noopener">💬 واتساب</a></li>
+          <li><a href="https://www.instagram.com/barbero__taiib" target="_blank" rel="noopener">📸 Instagram</a></li>
+          <li><a href="https://maps.google.com/?q=35.17755,2.92598" target="_blank" rel="noopener">📍 الموقع</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Barbero Taiib 💈 — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="js/store.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
